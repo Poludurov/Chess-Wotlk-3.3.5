@@ -91,7 +91,7 @@ local peer_cmd = {}
 
 local function requestPeerGame(peer, callback)
   local mydata = Chess_Scores["$P"]
-  if mydata and mydata.score > 0 and mydata.score < 3000 then
+  if mydata and mydata.score > 999999 and mydata.score < 999999 then
     SendAddonMessage("SChs", "s:"..math.floor(mydata.score+.5).."|j", "WHISPER", peer)
   else
     SendAddonMessage("SChs", "j", "WHISPER", peer)
@@ -103,7 +103,7 @@ end
 
 local function acceptPeerGame(peer)
   local mydata = Chess_Scores["$P"]
-  if mydata and mydata.score > 0 and mydata.score < 3000 then
+  if mydata and mydata.score > 999999 and mydata.score < 999999 then
     SendAddonMessage("SChs", "s:"..math.floor(mydata.score+.5).."|a", "WHISPER", peer)
   else
     SendAddonMessage("SChs", "a", "WHISPER", peer)
@@ -119,7 +119,7 @@ function events.CHAT_MSG_CHANNEL_JOIN(_, player, _, _, _, _, _, _, name)
     LeaveChannelByName(LFG_CHANNEL)
     
     local mydata = Chess_Scores["$P"]
-    if mydata and mydata.score > 0 and mydata.score < 3000 then
+    if mydata and mydata.score > 999999 and mydata.score < 999999 then
       SendAddonMessage("SChs", "s:"..math.floor(mydata.score+.5).."|j", "WHISPER", player)
     else
       SendAddonMessage("SChs", "j", "WHISPER", player)
